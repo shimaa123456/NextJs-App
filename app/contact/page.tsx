@@ -1,6 +1,5 @@
 // app/contact/page.tsx
 'use client';
-
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -28,7 +27,6 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     alert('Thank you! Your message has been sent. (This is a demo)');
-    // Here you can connect to your backend API later
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
@@ -42,9 +40,12 @@ export default function Contact() {
           Have questions? We'd love to hear from you.
         </Typography>
 
-        <form onSubmit={handleSubmit}>
+        {/* ✅ بدل form عادية استخدم Box عشان Next.js */}
+        <Box component="form" onSubmit={handleSubmit}>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6}>
+
+            {/* ✅ size بدل item */}
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Your Name"
@@ -54,7 +55,8 @@ export default function Contact() {
                 required
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
+
+            <Grid size={{ xs: 12, sm: 6 }}>
               <TextField
                 fullWidth
                 label="Email Address"
@@ -66,7 +68,7 @@ export default function Contact() {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Subject"
@@ -77,7 +79,7 @@ export default function Contact() {
               />
             </Grid>
 
-            <Grid item xs={12}>
+            <Grid size={{ xs: 12 }}>
               <TextField
                 fullWidth
                 label="Message"
@@ -90,19 +92,20 @@ export default function Contact() {
               />
             </Grid>
 
-            <Grid item xs={12}>
-              <Button 
-                type="submit" 
-                variant="contained" 
-                size="large" 
+            <Grid size={{ xs: 12 }}>
+              <Button
+                type="submit"
+                variant="contained"
+                size="large"
                 fullWidth
                 sx={{ py: 1.5 }}
               >
                 Send Message
               </Button>
             </Grid>
+
           </Grid>
-        </form>
+        </Box>
 
         <Box sx={{ mt: 6, textAlign: 'center' }}>
           <Typography variant="body2" color="text.secondary">

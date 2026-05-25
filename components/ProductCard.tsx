@@ -1,6 +1,4 @@
-// components/ProductCard.tsx
 'use client';
-
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -23,31 +21,26 @@ export default function ProductCard({ product }: { product: Product }) {
         alt={product.title}
         sx={{ objectFit: 'contain', p: 2 }}
       />
-
       <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h6" fontWeight="bold">
+        {/* ✅ fontWeight اتنقلت جوه sx */}
+        <Typography gutterBottom variant="h6" sx={{ fontWeight: 'bold' }}>
           {product.title}
         </Typography>
-
         <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
           {product.description.substring(0, 85)}...
         </Typography>
-
         <Typography variant="h6" color="primary">
           {Number(discountedPrice)} EGP
         </Typography>
-
         {product.discountPercentage && (
           <Typography variant="body2" color="error" sx={{ textDecoration: 'line-through' }}>
             {product.price} EGP
           </Typography>
         )}
-
         <Typography variant="caption" display="block" sx={{ mt: 1 }}>
           ⭐ {product.rating} | {product.stock} in stock
         </Typography>
       </CardContent>
-
       <CardActions>
         <Button size="small" variant="contained" fullWidth>
           Add to Cart
