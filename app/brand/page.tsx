@@ -3,7 +3,6 @@
 
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -61,38 +60,33 @@ export default function BrandPage() {
         Our Brands
       </Typography>
 
-      {/* استخدمنا div مع sx بدل Grid item عشان نتجنب الـ TypeScript Error */}
-      <Grid container spacing={4}>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+        gap: '24px'
+      }}>
         {brands.map((brand) => (
-          <Grid 
-            key={brand._id}
-            xs={12} 
-            sm={6} 
-            md={4} 
-            lg={3}
-          >
-            <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
-              <CardMedia
-                component="img"
-                image={brand.image}
-                alt={brand.name}
-                sx={{ 
-                  height: 140, 
-                  width: 140, 
-                  objectFit: 'contain', 
-                  mx: 'auto', 
-                  mb: 2 
-                }}
-              />
-              <CardContent>
-                <Typography variant="h6" fontWeight="bold">
-                  {brand.name}
-                </Typography>
-              </CardContent>
-            </Card>
-          </Grid>
+          <Card key={brand._id} sx={{ textAlign: 'center', p: 3, height: '100%' }}>
+            <CardMedia
+              component="img"
+              image={brand.image}
+              alt={brand.name}
+              sx={{ 
+                height: 140, 
+                width: 140, 
+                objectFit: 'contain', 
+                mx: 'auto', 
+                mb: 2 
+              }}
+            />
+            <CardContent>
+              <Typography variant="h6" fontWeight="bold">
+                {brand.name}
+              </Typography>
+            </CardContent>
+          </Card>
         ))}
-      </Grid>
+      </div>
     </Container>
   );
 }
