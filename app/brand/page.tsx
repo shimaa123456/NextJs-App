@@ -3,7 +3,6 @@
 
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -87,9 +86,6 @@ export default function BrandPage() {
               <CardContent>
                 <Typography variant="h6" fontWeight="bold">
                   {brand.name}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
-                  {brand.slug}
                 </Typography>
               </CardContent>
             </Card>
