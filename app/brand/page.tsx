@@ -8,7 +8,6 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
-import Paper from '@mui/material/Paper';
 import { useEffect, useState } from 'react';
 
 interface Brand {
@@ -41,8 +40,21 @@ export default function BrandPage() {
     fetchBrands();
   }, []);
 
-  if (loading) return <Container sx={{ py: 8, textAlign: 'center' }}><Typography>Loading Brands...</Typography></Container>;
-  if (error) return <Container sx={{ py: 8, textAlign: 'center' }}><Typography color="error">{error}</Typography></Container>;
+  if (loading) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 8, textAlign: 'center' }}>
+        <Typography variant="h5">Loading Brands...</Typography>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container maxWidth="lg" sx={{ py: 8, textAlign: 'center' }}>
+        <Typography color="error" variant="h6">{error}</Typography>
+      </Container>
+    );
+  }
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
@@ -53,19 +65,25 @@ export default function BrandPage() {
       <Grid container spacing={4}>
         {brands.map((brand) => (
           <Grid 
+            key={brand._id}
             item 
             xs={12} 
             sm={6} 
             md={4} 
-            lg={3} 
-            key={brand._id}
+            lg={3}
           >
             <Card sx={{ height: '100%', textAlign: 'center', p: 3 }}>
               <CardMedia
                 component="img"
                 image={brand.image}
                 alt={brand.name}
-                sx={{ height: 140, width: 140, objectFit: 'contain', mx: 'auto', mb: 2 }}
+                sx={{ 
+                  height: 140, 
+                  width: 140, 
+                  objectFit: 'contain', 
+                  mx: 'auto', 
+                  mb: 2 
+                }}
               />
               <CardContent>
                 <Typography variant="h6" fontWeight="bold">
