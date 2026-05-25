@@ -1,3 +1,4 @@
+// components/ProductCard.tsx
 'use client';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
@@ -22,7 +23,6 @@ export default function ProductCard({ product }: { product: Product }) {
         sx={{ objectFit: 'contain', p: 2 }}
       />
       <CardContent sx={{ flexGrow: 1 }}>
-        {/* ✅ fontWeight اتنقلت جوه sx */}
         <Typography gutterBottom variant="h6" sx={{ fontWeight: 'bold' }}>
           {product.title}
         </Typography>
@@ -37,7 +37,8 @@ export default function ProductCard({ product }: { product: Product }) {
             {product.price} EGP
           </Typography>
         )}
-        <Typography variant="caption" display="block" sx={{ mt: 1 }}>
+        {/* ✅ display اتنقلت جوه sx */}
+        <Typography variant="caption" sx={{ display: 'block', mt: 1 }}>
           ⭐ {product.rating} | {product.stock} in stock
         </Typography>
       </CardContent>
