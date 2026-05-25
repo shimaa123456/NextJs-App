@@ -66,7 +66,6 @@ export default function BrandPage() {
         {brands.map((brand) => (
           <Grid 
             key={brand._id}
-            item 
             xs={12} 
             sm={6} 
             md={4} 
