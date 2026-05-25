@@ -61,6 +61,7 @@ export default function BrandPage() {
         Our Brands
       </Typography>
 
+      {/* استخدمنا div مع sx بدل Grid item عشان نتجنب الـ TypeScript Error */}
       <Grid container spacing={4}>
         {brands.map((brand) => (
           <Grid 
