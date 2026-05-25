@@ -62,26 +62,31 @@ export default function BrandPage() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
-        gap: '24px'
+        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+        gap: '24px',
+        padding: '0 16px'
       }}>
         {brands.map((brand) => (
-          <Card key={brand._id} sx={{ textAlign: 'center', p: 3, height: '100%' }}>
+          <Card key={brand._id} sx={{ textAlign: 'center', height: '100%' }}>
             <CardMedia
               component="img"
               image={brand.image}
               alt={brand.name}
               sx={{ 
-                height: 140, 
-                width: 140, 
+                height: 160, 
+                width: 160, 
                 objectFit: 'contain', 
-                mx: 'auto', 
+                mx: 'auto',
+                mt: 3,
                 mb: 2 
               }}
             />
             <CardContent>
-              <Typography variant="h6" fontWeight="bold">
+              <Typography variant="h6" fontWeight="bold" gutterBottom>
                 {brand.name}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                {brand.slug}
               </Typography>
             </CardContent>
           </Card>
