@@ -1,6 +1,5 @@
 // app/brand/page.tsx
 'use client';
-
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Card from '@mui/material/Card';
@@ -28,13 +27,12 @@ export default function BrandPage() {
         
         const data = await res.json();
         setBrands(data.data || []);
-      } catch (err) {
+      } catch {
         setError('Failed to load brands. Please try again later.');
       } finally {
         setLoading(false);
       }
     };
-
     fetchBrands();
   }, []);
 
@@ -59,7 +57,6 @@ export default function BrandPage() {
       <Typography variant="h3" gutterBottom align="center" sx={{ mb: 6 }}>
         Our Brands
       </Typography>
-
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
@@ -80,7 +77,8 @@ export default function BrandPage() {
               }}
             />
             <CardContent>
-              <Typography variant="h6" fontWeight="bold">
+              {/* ✅ التعديل هنا: fontWeight اتنقلت جوه sx */}
+              <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
                 {brand.name}
               </Typography>
             </CardContent>
